@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Tusher Hossen | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                        accent: '#10b981', // Emerald for active indicators
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #18181b;
+        }
+        .light ::-webkit-scrollbar-track {
+            background: #f4f4f5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 4px;
+        }
+        .light ::-webkit-scrollbar-thumb {
+            background: #d4d4d8;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #52525b;
+        }
+
+        /* Dot Background Effect */
+        .dot-grid {
+            background-image: radial-gradient(rgba(139, 92, 246, 0.1) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+        .dark .dot-grid {
+            background-image: radial-gradient(rgba(139, 92, 246, 0.15) 1.5px, transparent 1.5px);
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 transition-colors duration-300 font-sans selection:bg-primary-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-zinc-50/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-900 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#hero" class="group flex items-center space-x-2 text-xl font-bold tracking-tight">
+                <span class="w-8 h-8 rounded-lg bg-primary-600 flex items-center justify-center text-white text-sm font-extrabold group-hover:bg-primary-500 transition-colors">T</span>
+                <span>Tusher<span class="text-primary-600">.</span></span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#about" class="text-zinc-600 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+                <a href="#skills" class="text-zinc-600 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Skills</a>
+                <a href="#volunteer" class="text-zinc-600 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">VBD Volunteer</a>
+                <a href="#projects" class="text-zinc-600 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projects</a>
+                <a href="#contact" class="text-zinc-600 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Actions: Theme Toggle + Mobile Menu Trigger -->
+            <div class="flex items-center space-x-4">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle" class="p-2.5 rounded-full border border-zinc-200 dark:border-zinc-850 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-600 dark:text-zinc-350 transition-all shadow-sm" aria-label="Toggle theme">
+                    <i id="themeIcon" class="fa-solid fa-moon text-base"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="menuBtn" class="p-2.5 md:hidden rounded-full border border-zinc-200 dark:border-zinc-850 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-all" aria-label="Toggle Mobile Menu">
+                    <i id="menuIcon" class="fa-solid fa-bars text-base"></i>
+                </button>
+
+                <!-- CTA Button -->
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-150 rounded-full transition-all duration-300 shadow-sm">
+                    Hire Me
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-900 px-6 py-6 space-y-4 shadow-lg transition-all duration-300">
+            <a href="#about" class="block text-lg font-medium text-zinc-700 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400 py-1 border-b border-zinc-100 dark:border-zinc-900">About</a>
+            <a href="#skills" class="block text-lg font-medium text-zinc-700 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400 py-1 border-b border-zinc-100 dark:border-zinc-900">Skills</a>
+            <a href="#volunteer" class="block text-lg font-medium text-zinc-700 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400 py-1 border-b border-zinc-100 dark:border-zinc-900">VBD Volunteer</a>
+            <a href="#projects" class="block text-lg font-medium text-zinc-700 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400 py-1 border-b border-zinc-100 dark:border-zinc-900">Projects</a>
+            <a href="#contact" class="block text-lg font-medium text-zinc-700 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400 py-1">Contact</a>
+            <div class="pt-4">
+                <a href="#contact" class="w-full inline-flex items-center justify-center py-3 text-sm font-semibold uppercase tracking-wider text-white bg-zinc-900 dark:bg-white dark:text-zinc-950 rounded-xl transition-all shadow-md">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden dot-grid">
+        <!-- Floating gradient graphics -->
+        <div class="absolute top-1/4 left-10 w-72 h-72 bg-primary-500/10 dark:bg-primary-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-accent/5 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12 relative z-10">
+            <!-- Hero Text Content -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <span class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-primary-100 text-primary-800 dark:bg-primary-950/50 dark:text-primary-300 border border-primary-200/50 dark:border-primary-800/30">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    <span>AI & ML Explorer</span>
+                </span>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-zinc-900 dark:text-white">
+                    Hi, I'm <br class="hidden sm:block">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-indigo-500 dark:from-primary-400 dark:to-indigo-300">
+                        Md. Tusher Hossen
+                    </span>
+                </h1>
+
+                <p class="font-serif italic text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto lg:mx-0">
+                    CSE Student at Daffodil International University. Architecting pathways in Artificial Intelligence and Machine Learning.
+                </p>
+
+                <p class="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Passionate about modern computing paradigms. Beyond academic frontiers, I steer social welfare initiatives as the General Secretary of Volunteer For Bangladesh (VBD) Manikganj District.
+                </p>
+
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-primary-500/20 dark:shadow-none transition-all duration-300 group">
+                        Let's Talk 
+                        <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#volunteer" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-semibold rounded-2xl border border-zinc-200/50 dark:border-zinc-800 transition-all duration-300">
+                        View Volunteer Leadership
+                    </a>
+                </div>
+
+                <!-- Stats / Quick Info Banner -->
+                <div class="grid grid-cols-3 gap-4 pt-10 border-t border-zinc-200 dark:border-zinc-900 max-w-lg mx-auto lg:mx-0">
+                    <div class="text-center lg:text-left">
+                        <p class="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white">DIU</p>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">CSE Dept.</p>
+                    </div>
+                    <div class="text-center lg:text-left border-x border-zinc-200 dark:border-zinc-900 px-4">
+                        <p class="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white">VBD</p>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">Gen. Secretary</p>
+                    </div>
+                    <div class="text-center lg:text-left">
+                        <p class="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white">AI/ML</p>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mt-1">Specialization</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Hero Card / Avatar representation -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 group">
+                    <!-- Rotating Decorative Frame -->
+                    <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary-600 to-accent opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500"></div>
+                    <!-- Frame Border -->
+                    <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-primary-500 to-indigo-500 opacity-20 group-hover:opacity-100 transition duration-500"></div>
+                    
+                    <!-- Core Info Display Card -->
+                    <div class="relative w-full h-full bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-850 p-6 flex flex-col justify-between overflow-hidden shadow-2xl">
+                        <!-- Top elements -->
+                        <div class="flex justify-between items-start">
+                            <div class="flex space-x-1.5">
+                                <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+                            </div>
+                            <span class="text-[10px] font-mono tracking-widest uppercase bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1 rounded text-zinc-500 dark:text-zinc-400">STATUS: DEVELOPING</span>
+                        </div>
+
+                        <!-- Mid Content: Interactive visual representing AI / Network code -->
+                        <div class="my-6 space-y-4 font-mono text-[11px] sm:text-xs text-zinc-600 dark:text-zinc-400">
+                            <div class="space-y-1">
+                                <p class="text-primary-500 dark:text-primary-400">&gt; const student = new CSE_Student();</p>
+                                <p>&gt; student.name = "Md. Tusher Hossen";</p>
+                                <p>&gt; student.institute = "DIU";</p>
+                                <p>&gt; student.interests = ["AI", "ML", "DataScience"];</p>
+                            </div>
+                            <div class="p-3 bg-zinc-50 dark:bg-zinc-950/80 rounded-lg border border-zinc-200/50 dark:border-zinc-900">
+                                <span class="text-accent font-semibold">// Neural Net Init</span>
+                                <p class="text-zinc-400 dark:text-zinc-500">Epoch 150/150 - Loss: 0.012 - Acc: 98.4%</p>
+                                <div class="w-full bg-zinc-200 dark:bg-zinc-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                                    <div class="bg-accent h-full rounded-full" style="width: 98%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Elements -->
+                        <div class="flex items-center justify-between pt-3 border-t border-zinc-100 dark:border-zinc-850">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-primary-500"></span>
+                                <span class="text-xs font-semibold text-zinc-850 dark:text-zinc-200">Manikganj, BD</span>
+                            </div>
+                            <span class="text-xs text-zinc-400 dark:text-zinc-500">Est. 2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 border-t border-zinc-200 dark:border-zinc-900 bg-zinc-50 dark:bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Section Title & Meta -->
+                <div class="lg:col-span-4 lg:sticky lg:top-24 space-y-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">Who I Am</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+                        About <br>My Path & <br>Aspirations
+                    </h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed text-sm sm:text-base">
+                        I balance academic learning at Daffodil International University with dynamic social development roles. Creating software that impacts communities is my main driver.
+                    </p>
+                    <div class="pt-2">
+                        <a href="#contact" class="inline-flex items-center text-sm font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-500 group">
+                            Contact directly
+                            <i class="fa-solid fa-arrow-right ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Academic and Personal Story Details -->
+                <div class="lg:col-span-8 space-y-8">
+                    <!-- Education Card -->
+                    <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200/60 dark:border-zinc-900 p-6 sm:p-8 space-y-4 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400">
+                                <i class="fa-solid fa-graduation-cap text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-extrabold text-lg text-zinc-900 dark:text-white">Daffodil International University (DIU)</h3>
+                                <p class="text-sm text-zinc-500 dark:text-zinc-400">B.Sc. in Computer Science & Engineering</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed pt-2">
+                            As a student in the CSE department at DIU, I immerse myself in critical software theories and implementation techniques. I regularly experiment with computational solutions, data science concepts, and core algorithmic frameworks to broaden my development capabilities.
+                        </p>
+                    </div>
+
+                    <!-- AI & ML Vision Block -->
+                    <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200/60 dark:border-zinc-900 p-6 sm:p-8 space-y-4 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent">
+                                <i class="fa-solid fa-brain text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-extrabold text-lg text-zinc-900 dark:text-white">AI / ML Domain Focus</h3>
+                                <p class="text-sm text-zinc-500 dark:text-zinc-400">Artificial Intelligence & Machine Learning</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed pt-2">
+                            The potential of cognitive systems excites me. I am focusing my research and personal projects on statistical model building, supervised/unsupervised machine learning, natural language processing, and deep neural structures. I constantly explore new libraries and academic papers to keep pace with this accelerating landscape.
+                        </p>
+                    </div>
+
+                    <!-- Volunteer Spirit Highlight -->
+                    <div class="bg-gradient-to-br from-indigo-50/50 to-primary-50/50 dark:from-indigo-950/20 dark:to-primary-950/20 rounded-3xl border border-primary-200/30 dark:border-primary-900/40 p-6 sm:p-8 space-y-4 shadow-sm">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-950/80 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                <i class="fa-solid fa-handshake-angle text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-extrabold text-lg text-zinc-900 dark:text-white">Social Impact & Volunteering</h3>
+                                <p class="text-sm text-indigo-600 dark:text-indigo-400 font-semibold">VBD Leadership & Organization</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed pt-2">
+                            I am dedicated to positive social change. Balancing computer science with volunteer activism has provided me with essential management skills, structured leadership insights, and an unwavering commitment to societal and community betterment.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Focus Section -->
+    <section id="skills" class="py-24 border-t border-zinc-200 dark:border-zinc-900 bg-zinc-100/50 dark:bg-zinc-900/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">Expertise Spectrum</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">What I’m Building & Learning</h2>
+                <p class="text-sm sm:text-base text-zinc-500 dark:text-zinc-400">
+                    A selection of technical capabilities, programming frameworks, and core conceptual competencies.
+                </p>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill Card 1: AI & ML -->
+                <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200/80 dark:border-zinc-850 p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-zinc-900 dark:text-white">AI & Machine Learning</h3>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 mb-4">Models, Deep Learning & Analysis</p>
+                    <ul class="space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-purple-500 mr-2.5 text-xs"></i> Supervised & Unsupervised Learning</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-purple-500 mr-2.5 text-xs"></i> Neural Networks & Scikit-learn</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-purple-500 mr-2.5 text-xs"></i> Data Cleaning & Preprocessing</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 2: Core CSE Tech -->
+                <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200/80 dark:border-zinc-850 p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-zinc-900 dark:text-white">Core Computer Science</h3>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 mb-4">Languages & Algorithms</p>
+                    <ul class="space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-blue-500 mr-2.5 text-xs"></i> Python, C, C++ Development</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-blue-500 mr-2.5 text-xs"></i> Data Structures & Algorithms</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-blue-500 mr-2.5 text-xs"></i> Database Management (SQL)</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 3: Volunteer Management / Soft Skills -->
+                <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200/80 dark:border-zinc-850 p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
+                        <i class="fa-solid fa-people-roof"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-zinc-900 dark:text-white">Leadership & Strategy</h3>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 mb-4">Project & Volunteer Management</p>
+                    <ul class="space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-500 mr-2.5 text-xs"></i> Team Building & Operations</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-500 mr-2.5 text-xs"></i> Strategic Campaign Planning</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-500 mr-2.5 text-xs"></i> Public Speaking & Relations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Skill badging display -->
+            <div class="mt-12 flex flex-wrap justify-center gap-3 bg-white dark:bg-zinc-900/60 rounded-3xl border border-zinc-200/60 dark:border-zinc-900 p-6">
+                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-300">Python</span>
+                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-300">C++</span>
+                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-300">SQL</span>
+                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-300">Supervised Learning</span>
+                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-300">Neural Networks</span>
+                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-300">Pandas & Numpy</span>
+                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-300">Git & Github</span>
+                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-300">Community Outreach</span>
+                <span class="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-300">Crisis Management</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section id="volunteer" class="py-24 border-t border-zinc-200 dark:border-zinc-900 bg-zinc-50 dark:bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Sticky Intro Info -->
+                <div class="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">Leadership & Impact</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+                        Volunteer For <br>
+                        <span class="text-primary-600 dark:text-primary-400">Bangladesh (VBD)</span>
+                    </h2>
+                    
+                    <div class="p-5 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-850 space-y-3 shadow-sm">
+                        <p class="text-sm font-semibold text-zinc-850 dark:text-zinc-200 flex items-center">
+                            <i class="fa-solid fa-users text-primary-500 mr-2.5"></i>
+                            VBD Manikganj District Team
+                        </p>
+                        <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                            Volunteer For Bangladesh (VBD) is the youth-wing of JAAGO Foundation. As district leaders, we build, host, and mobilize local humanitarian initiatives.
+                        </p>
+                    </div>
+
+                    <!-- Interactive VBD Metrics -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-zinc-100 dark:bg-zinc-900/60 rounded-2xl border border-zinc-200/50 dark:border-zinc-850 text-center">
+                            <p class="text-3xl font-extrabold text-primary-600 dark:text-primary-400">2+</p>
+                            <p class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mt-1 font-semibold">Leadership Roles</p>
+                        </div>
+                        <div class="p-4 bg-zinc-100 dark:bg-zinc-900/60 rounded-2xl border border-zinc-200/50 dark:border-zinc-850 text-center">
+                            <p class="text-3xl font-extrabold text-accent">20+</p>
+                            <p class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mt-1 font-semibold">Campaigns Executed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Path Timeline Details -->
+                <div class="lg:col-span-7 space-y-12 relative before:absolute before:top-4 before:bottom-4 before:left-6 lg:before:left-8 before:w-0.5 before:bg-zinc-200 dark:before:bg-zinc-900">
+                    
+                    <!-- Role 1: General Secretary (Current) -->
+                    <div class="relative pl-14 lg:pl-18 group">
+                        <!-- Timeline circle pin -->
+                        <div class="absolute left-3.5 lg:left-5.5 top-1.5 w-5 h-5 rounded-full border-4 border-zinc-50 dark:border-zinc-950 bg-primary-600 ring-4 ring-primary-500/20 group-hover:scale-110 transition-transform"></div>
+                        
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-accent/10 text-accent mb-2">
+                            CURRENT POSITION
+                        </span>
+
+                        <h3 class="text-xl font-bold text-zinc-900 dark:text-white">General Secretary</h3>
+                        <p class="text-sm font-semibold text-primary-600 dark:text-primary-400 mt-0.5">VBD Manikganj District Team</p>
+                        <p class="text-xs text-zinc-400 dark:text-zinc-500 font-mono mt-1">2024 - Present</p>
+                        
+                        <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-850 p-5 mt-4 space-y-3 hover:shadow-md transition-all">
+                            <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                                Executing core district operations, leading over 50 registered regional volunteers, and structuring collaboration pipelines with civil societies, educational groups, and the central JAAGO Foundation operations team.
+                            </p>
+                            <ul class="space-y-2 text-xs text-zinc-500 dark:text-zinc-400">
+                                <li class="flex items-center"><i class="fa-solid fa-angle-right text-primary-500 mr-2"></i> Leading district campaign execution and resource mobilization.</li>
+                                <li class="flex items-center"><i class="fa-solid fa-angle-right text-primary-500 mr-2"></i> Strategizing local environmental and educational events.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Role 2: Project Officer -->
+                    <div class="relative pl-14 lg:pl-18 group">
+                        <!-- Timeline circle pin -->
+                        <div class="absolute left-3.5 lg:left-5.5 top-1.5 w-5 h-5 rounded-full border-4 border-zinc-50 dark:border-zinc-950 bg-zinc-300 dark:bg-zinc-800 ring-4 ring-zinc-300/10 dark:ring-zinc-800/10 group-hover:scale-110 transition-transform"></div>
+
+                        <h3 class="text-xl font-bold text-zinc-900 dark:text-white">Project Officer</h3>
+                        <p class="text-sm font-semibold text-zinc-600 dark:text-zinc-400 mt-0.5">VBD Manikganj District Team</p>
+                        <p class="text-xs text-zinc-400 dark:text-zinc-500 font-mono mt-1">Previous Experience</p>
+                        
+                        <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-850 p-5 mt-4 space-y-3 hover:shadow-md transition-all">
+                            <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                                Formulated project execution checklists, mapped operational risks, supervised budget logs, and ensured smooth compliance on ground during major youth campaigns.
+                            </p>
+                            <ul class="space-y-2 text-xs text-zinc-500 dark:text-zinc-400">
+                                <li class="flex items-center"><i class="fa-solid fa-angle-right text-zinc-400 mr-2"></i> Managed regional logistics, event schedules, and execution maps.</li>
+                                <li class="flex items-center"><i class="fa-solid fa-angle-right text-zinc-400 mr-2"></i> Collected campaign data metrics and composed final evaluation logs.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 border-t border-zinc-200 dark:border-zinc-900 bg-zinc-100/50 dark:bg-zinc-900/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 space-y-4 md:space-y-0">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">Work Portfolio</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white mt-1">Highlighted Projects</h2>
+                </div>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 max-w-sm">
+                    A collection of experimental machine learning models and tool implementations mapping to educational tasks and social logistics.
+                </p>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200/60 dark:border-zinc-850 overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <!-- Project Visual Header -->
+                        <div class="bg-gradient-to-br from-indigo-500 to-primary-600 h-48 flex items-center justify-center text-white relative p-6 overflow-hidden">
+                            <i class="fa-solid fa-chart-line text-6xl opacity-30 group-hover:scale-110 transition-transform duration-300"></i>
+                            <span class="absolute top-4 left-4 bg-zinc-950/40 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase">AI & ML</span>
+                        </div>
+                        
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-extrabold text-xl text-zinc-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">Predictive Heart Analytics Model</h3>
+                            <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                                A clean Python model designed to compute cardiovascular anomaly risk scores leveraging ensemble machine learning classifiers on pre-processed standard health records.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-850 mt-4">
+                        <span class="text-xs font-semibold text-zinc-500">Python & Scikit-learn</span>
+                        <button onclick="openModal('predictive-heart')" class="text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">Explore <i class="fa-solid fa-arrow-up-right-from-square ml-0.5"></i></button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200/60 dark:border-zinc-850 overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <!-- Project Visual Header -->
+                        <div class="bg-gradient-to-br from-purple-500 to-indigo-600 h-48 flex items-center justify-center text-white relative p-6 overflow-hidden">
+                            <i class="fa-solid fa-users-gear text-6xl opacity-30 group-hover:scale-110 transition-transform duration-300"></i>
+                            <span class="absolute top-4 left-4 bg-zinc-950/40 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase">Operations Tool</span>
+                        </div>
+                        
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-extrabold text-xl text-zinc-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">VBD Volunteer Resource Dashboard</h3>
+                            <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                                An automated dashboard tool conceptualized to distribute tasks, optimize campaign check-in steps, and measure regional social impact metrics.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-850 mt-4">
+                        <span class="text-xs font-semibold text-zinc-500">Node & SQL</span>
+                        <button onclick="openModal('volunteer-dashboard')" class="text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">Explore <i class="fa-solid fa-arrow-up-right-from-square ml-0.5"></i></button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200/60 dark:border-zinc-850 overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <!-- Project Visual Header -->
+                        <div class="bg-gradient-to-br from-emerald-500 to-teal-600 h-48 flex items-center justify-center text-white relative p-6 overflow-hidden">
+                            <i class="fa-solid fa-eye text-6xl opacity-30 group-hover:scale-110 transition-transform duration-300"></i>
+                            <span class="absolute top-4 left-4 bg-zinc-950/40 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase">Computer Vision</span>
+                        </div>
+                        
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-extrabold text-xl text-zinc-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">Intelligent Leaf Disease Classifier</h3>
+                            <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                                A localized neural net implementation designed to parse leaf image sets, detect visual decay markers, and output preliminary agrarian treatment advice.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-850 mt-4">
+                        <span class="text-xs font-semibold text-zinc-500">Python & TensorFlow</span>
+                        <button onclick="openModal('leaf-disease')" class="text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">Explore <i class="fa-solid fa-arrow-up-right-from-square ml-0.5"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 border-t border-zinc-200 dark:border-zinc-900 bg-zinc-50 dark:bg-zinc-950 relative overflow-hidden">
+        <!-- Dot Grid background inside section -->
+        <div class="absolute inset-0 dot-grid opacity-50 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Details Box with direct information provided -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="space-y-3 text-center lg:text-left">
+                        <span class="text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">Available For Collaboration</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">Let’s connect!</h2>
+                        <p class="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                            Have an exciting AI/ML exploration concept, educational project, or community empowerment campaign? Reach out directly via phone, email or visit in Savar.
+                        </p>
+                    </div>
+
+                    <!-- Verified Details List -->
+                    <div class="space-y-4">
+                        <!-- Location Detail -->
+                        <div class="flex items-start space-x-4 p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-850">
+                            <div class="w-11 h-11 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase tracking-widest font-bold text-zinc-400 dark:text-zinc-500">Location</h4>
+                                <p class="text-sm sm:text-base font-semibold text-zinc-850 dark:text-zinc-200 mt-1">Savar, Bangladesh</p>
+                            </div>
+                        </div>
+
+                        <!-- Email Detail -->
+                        <a href="mailto:mdtusherhossen701@gmail.com" class="flex items-start space-x-4 p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-850 hover:border-primary-500 dark:hover:border-primary-500 transition-colors group">
+                            <div class="w-11 h-11 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 shrink-0 group-hover:bg-primary-500 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <h4 class="text-xs uppercase tracking-widest font-bold text-zinc-400 dark:text-zinc-500">Email Address</h4>
+                                <p class="text-sm sm:text-base font-semibold text-zinc-850 dark:text-zinc-200 mt-1 truncate">mdtusherhossen701@gmail.com</p>
+                            </div>
+                        </a>
+
+                        <!-- Phone Detail -->
+                        <a href="tel:01307168369" class="flex items-start space-x-4 p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-850 hover:border-primary-500 dark:hover:border-primary-500 transition-colors group">
+                            <div class="w-11 h-11 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 shrink-0 group-hover:bg-primary-500 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase tracking-widest font-bold text-zinc-400 dark:text-zinc-500">Call Directly</h4>
+                                <p class="text-sm sm:text-base font-semibold text-zinc-850 dark:text-zinc-200 mt-1">01307168369</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Interactive Email Form -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200/80 dark:border-zinc-850 p-6 sm:p-8 shadow-xl">
+                        <h3 class="font-extrabold text-xl text-zinc-900 dark:text-white mb-6">Send an Inquiry</h3>
+                        
+                        <!-- Interactive Form -->
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div class="space-y-1.5">
+                                    <label for="name" class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Full Name</label>
+                                    <input type="text" id="name" required class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl text-zinc-800 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="Your name">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label for="email" class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Email Address</label>
+                                    <input type="email" id="email" required class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl text-zinc-800 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="name@domain.com">
+                                </div>
+                            </div>
+
+                            <div class="space-y-1.5">
+                                <label for="subject" class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Subject</label>
+                                <input type="text" id="subject" required class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl text-zinc-800 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="Project, Leadership, or Academic inquiry">
+                            </div>
+
+                            <div class="space-y-1.5">
+                                <label for="message" class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Your Message</label>
+                                <textarea id="message" rows="4" required class="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-850 rounded-xl text-zinc-800 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" placeholder="Describe how we can work together..."></textarea>
+                            </div>
+
+                            <!-- Success / Error notification bar inside the form area -->
+                            <div id="formFeedback" class="hidden p-4 rounded-xl text-sm font-semibold"></div>
+
+                            <button type="submit" class="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl shadow-md transition-colors">
+                                Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-zinc-100 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-900 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <!-- Brand Info -->
+            <div class="flex items-center space-x-2 text-lg font-bold">
+                <span class="w-7 h-7 rounded-lg bg-primary-600 flex items-center justify-center text-white text-xs font-extrabold">T</span>
+                <span>Md. Tusher Hossen</span>
+            </div>
+            
+            <!-- Quick links -->
+            <div class="flex flex-wrap justify-center gap-6 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400">About</a>
+                <a href="#skills" class="hover:text-primary-600 dark:hover:text-primary-400">Skills</a>
+                <a href="#volunteer" class="hover:text-primary-600 dark:hover:text-primary-400">VBD Volunteer</a>
+                <a href="#projects" class="hover:text-primary-600 dark:hover:text-primary-400">Projects</a>
+            </div>
+
+            <!-- Social handles mock -->
+            <div class="flex items-center space-x-4">
+                <a href="#" class="w-9 h-9 rounded-full bg-zinc-200 dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-all"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                <a href="#" class="w-9 h-9 rounded-full bg-zinc-200 dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-all"><i class="fa-brands fa-github text-sm"></i></a>
+                <a href="#" class="w-9 h-9 rounded-full bg-zinc-200 dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+            </div>
+        </div>
+        <!-- Copyright text -->
+        <div class="max-w-7xl mx-auto px-6 border-t border-zinc-250/20 dark:border-zinc-900/40 mt-8 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-zinc-400 dark:text-zinc-500 gap-4">
+            <p>&copy; 2026 Md. Tusher Hossen. All Rights Reserved.</p>
+            <p>Built with clean responsive engineering paradigms.</p>
+        </div>
+    </footer>
+
+    <!-- Portfolio Detail Modals -->
+    <div id="detailModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-800 max-w-2xl w-full p-6 sm:p-8 space-y-6 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-zinc-500 hover:text-zinc-800 dark:hover:text-white transition-colors p-1" aria-label="Close modal">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <!-- Dynamic Modal Content Injection Point -->
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Custom Theme & Form Script logic -->
+    <script>
+        // DOM Elements
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const menuBtn = document.getElementById('menuBtn');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const detailModal = document.getElementById('detailModal');
+        const modalContent = document.getElementById('modalContent');
+        const contactForm = document.getElementById('contactForm');
+        const formFeedback = document.getElementById('formFeedback');
+
+        // Dark/Light Theme Switcher State Init
+        if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            document.documentElement.classList.remove('dark');
+            themeIcon.className = 'fa-solid fa-sun text-base';
+        } else {
+            document.documentElement.classList.add('dark');
+            themeIcon.className = 'fa-solid fa-moon text-base';
+        }
+
+        // Toggle Theme logic
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                themeIcon.className = 'fa-solid fa-sun text-base';
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-moon text-base';
+                localStorage.theme = 'dark';
+            }
+        });
+
+        // Mobile Menu logic
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-base';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-base';
+            }
+        });
+
+        // Close Mobile Menu on navigation link clicks
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-base';
+            });
+        });
+
+        // Dynamic Modals Content Data Map
+        const modalData = {
+            'predictive-heart': `
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300">AI & ML Module</span>
+                <h3 class="text-2xl font-extrabold text-zinc-900 dark:text-white mt-3">Predictive Heart Analytics Model</h3>
+                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400 mt-1">Python, Scikit-learn, Pandas, Seaborn</p>
+                <div class="border-t border-zinc-150 dark:border-zinc-800 my-4 pt-4 space-y-4">
+                    <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                        This analytical intelligence model was conceptualized as a solution to forecast cardiovascular anomalies using non-invasive clinical attributes. It applies comparative analysis on Decision Trees, Random Forests, and Gradient Boosting algorithms to target optimal accuracy weights.
+                    </p>
+                    <div class="bg-zinc-100 dark:bg-zinc-950 p-4 rounded-xl border border-zinc-200 dark:border-zinc-850">
+                        <span class="text-xs font-bold text-zinc-500 uppercase tracking-wider block mb-2">Technical Highlights</span>
+                        <ul class="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400">
+                            <li class="flex items-center"><i class="fa-solid fa-caret-right text-primary-500 mr-2"></i> Cleaned & normalized multivariate heart datasets.</li>
+                            <li class="flex items-center"><i class="fa-solid fa-caret-right text-primary-500 mr-2"></i> Handled class imbalance natively using SMOTE strategy.</li>
+                            <li class="flex items-center"><i class="fa-solid fa-caret-right text-primary-500 mr-2"></i> Achieved high prediction validation score of ~94.2%.</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            'volunteer-dashboard': `
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">Operations Tool</span>
+                <h3 class="text-2xl font-extrabold text-zinc-900 dark:text-white mt-3">VBD Volunteer Resource Dashboard</h3>
+                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400 mt-1">HTML5, Tailwind, JavaScript ES6</p>
+                <div class="border-t border-zinc-150 dark:border-zinc-800 my-4 pt-4 space-y-4">
+                    <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                        A specialized prototype utility designed specifically for Volunteer For Bangladesh district operations. This application targets resource dispatch, dynamic roster configurations, and communication distribution templates for environmental action days.
+                    </p>
+                    <div class="bg-zinc-100 dark:bg-zinc-950 p-4 rounded-xl border border-zinc-200 dark:border-zinc-850">
+                        <span class="text-xs font-bold text-zinc-500 uppercase tracking-wider block mb-2">Core Utilities Included</span>
+                        <ul class="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400">
+                            <li class="flex items-center"><i class="fa-solid fa-caret-right text-primary-500 mr-2"></i> On-the-fly shift management matrices.</li>
+                            <li class="flex items-center"><i class="fa-solid fa-caret-right text-primary-500 mr-2"></i> Live visualization panels for donation logs.</li>
+                            <li class="flex items-center"><i class="fa-solid fa-caret-right text-primary-500 mr-2"></i> Instant status logs exportable as CSV documents.</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            'leaf-disease': `
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">Computer Vision</span>
+                <h3 class="text-2xl font-extrabold text-zinc-900 dark:text-white mt-3">Intelligent Leaf Disease Classifier</h3>
+                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400 mt-1">Python, TensorFlow, Keras, OpenCV</p>
+                <div class="border-t border-zinc-150 dark:border-zinc-800 my-4 pt-4 space-y-4">
+                    <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                        This advanced system was designed to assist regional farmers in identifying agricultural plant ailments through visual evaluation. It features localized deep learning convolutional layers that scan uploaded leaf image sets for rust, spot, and visual decay matrices.
+                    </p>
+                    <div class="bg-zinc-100 dark:bg-zinc-950 p-4 rounded-xl border border-zinc-200 dark:border-zinc-850">
+                        <span class="text-xs font-bold text-zinc-500 uppercase tracking-wider block mb-2">Technical Capabilities</span>
+                        <ul class="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400">
+                            <li class="flex items-center"><i class="fa-solid fa-caret-right text-primary-500 mr-2"></i> Custom-designed CNN block with dropout regularization.</li>
+                            <li class="flex items-center"><i class="fa-solid fa-caret-right text-primary-500 mr-2"></i> Dataset augmentation mapping to counter minor sample counts.</li>
+                            <li class="flex items-center"><i class="fa-solid fa-caret-right text-primary-500 mr-2"></i> Lightweight setup suitable for deployment on low-spec server networks.</li>
+                        </ul>
+                    </div>
+                </div>
+            `
+        };
+
+        // Open Modal handler
+        function openModal(projectKey) {
+            if (!modalData[projectKey]) return;
+            modalContent.innerHTML = modalData[projectKey];
+            detailModal.classList.remove('hidden');
+            setTimeout(() => {
+                detailModal.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Lock background scrolling
+        }
+
+        // Close Modal handler
+        function closeModal() {
+            detailModal.classList.add('opacity-0');
+            setTimeout(() => {
+                detailModal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = ''; // Unlock background scrolling
+        }
+
+        // Close modal when user clicks outside the modal box
+        window.addEventListener('click', (event) => {
+            if (event.target === detailModal) {
+                closeModal();
+            }
+        });
+
+        // Interactive Contact Form submission simulation (prevents page breakages)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Get values
+            const nameVal = document.getElementById('name').value.trim();
+            const emailVal = document.getElementById('email').value.trim();
+            const subjectVal = document.getElementById('subject').value.trim();
+            const messageVal = document.getElementById('message').value.trim();
+
+            if (!nameVal || !emailVal || !subjectVal || !messageVal) {
+                showFeedback('Please fill out all the fields.', 'error');
+                return;
+            }
+
+            // Mock Submission Loading state
+            showFeedback('Sending message...', 'loading');
+
+            setTimeout(() => {
+                showFeedback(`Thank you, ${nameVal}! Your inquiry has been sent successfully. Tusher will contact you shortly.`, 'success');
+                contactForm.reset();
+            }, 1200);
+        }
+
+        // Show Form Feedback Helper
+        function showFeedback(message, type) {
+            formFeedback.classList.remove('hidden', 'bg-red-100', 'text-red-800', 'bg-emerald-100', 'text-emerald-800', 'dark:bg-red-950/50', 'dark:text-red-300', 'dark:bg-emerald-950/50', 'dark:text-emerald-300', 'bg-zinc-100', 'text-zinc-800', 'dark:bg-zinc-900', 'dark:text-zinc-355');
+            
+            if (type === 'error') {
+                formFeedback.classList.add('bg-red-100', 'text-red-800', 'dark:bg-red-950/50', 'dark:text-red-300');
+            } else if (type === 'success') {
+                formFeedback.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950/50', 'dark:text-emerald-300');
+            } else {
+                formFeedback.classList.add('bg-zinc-100', 'text-zinc-800', 'dark:bg-zinc-900', 'dark:text-zinc-300');
+            }
+            
+            formFeedback.innerText = message;
+            formFeedback.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
